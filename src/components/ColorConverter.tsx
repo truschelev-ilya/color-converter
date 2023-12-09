@@ -1,12 +1,12 @@
-import {useState} from "react";
-import styled from "styled-components";
+import {useState} from 'react';
+import styled from 'styled-components';
 
 export const ColorConverter = () => {
-    const [baseColor, setBaseColor] = useState('')
-    const [targetColor, setTargetColor] = useState('')
+    const [baseColor, setBaseColor] = useState('');
+    const [targetColor, setTargetColor] = useState('');
 
-    console.log(baseColor, 'baseColor')
-    console.log(targetColor, 'targetColor')
+    console.log(baseColor, 'baseColor');
+    console.log(targetColor, 'targetColor');
     return (
         <ColorConverterContainer>
             <ColorContainer color={baseColor}>
@@ -22,8 +22,8 @@ export const ColorConverter = () => {
                 </label>
             </ColorContainer>
         </ColorConverterContainer>
-    )
-}
+    );
+};
 
 const ColorContainer = styled.div`
   display: flex;
@@ -31,8 +31,8 @@ const ColorContainer = styled.div`
   width: 300px;
   height: 120px;
   padding: 16px;
-`
+`;
 
 const ColorConverterContainer = styled.div`
   display: flex;
-`
+`;

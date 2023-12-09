@@ -1,12 +1,9 @@
-import {ColorConverter} from "./components";
+import {ColorConverter} from './components';
 
-const  App = () => {
-
-  return (
+const  App = () => (
     <>
-      <ColorConverter />
+        <ColorConverter />
     </>
-  )
-}
+);
 
-export default App
+export default App;
