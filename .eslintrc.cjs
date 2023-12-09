@@ -31,6 +31,7 @@ module.exports = {
     'comma-spacing': ['error', {'before': false, 'after': true}],
     'max-len': ['error', {'code': 140}],
     '@typescript-eslint/no-explicit-any': ['error', {'ignoreRestArgs': true}],
+    "@typescript-eslint/no-unused-vars": "warn",
     'semi': ['error', 'always'],
     'linebreak-style': ['error', 'unix'],
     'no-console': ['warn', {allow: ['warn', 'error']}],
