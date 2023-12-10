@@ -1,1 +1,1 @@
-export {ColorConverter} from './ColorConverter.tsx';
+export {ColorConverter} from './ColorConverter';

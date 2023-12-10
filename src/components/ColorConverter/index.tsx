@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import {getHSLDif, hexToHSL, hexToRGB} from '../utils';
+import {getHSLDif, hexToHSL, hexToRGB} from '../../utils';
 
 export const ColorConverter = () => {
     const [baseColor, setBaseColor] = useState('');
@@ -51,7 +51,7 @@ export const ColorConverter = () => {
                 }
             </ColorContainer>
             {hslDif &&
-                <ColorContainer key="hslDifColorContainer" center>
+                <ColorContainer key="hslDifColorContainer" align="center">
                     <Title>HSL dif</Title>
                     <span>{hslDif}</span>
                 </ColorContainer>
@@ -79,10 +79,10 @@ const Title = styled.h4`
   margin: 12px 0;  
 `;
 
-const ColorContainer = styled.div<{background?: string, color?: string, center?: boolean}>`
+const ColorContainer = styled.div<{background?: string, color?: string, align?: string}>`
   display: flex;
   flex-direction: column;
-  align-items: ${props => props.center ? 'center': ''};
+  align-items: ${props => props.align ? props.align: 'initial'};
   background: ${props => props.background};
   color: ${props => props.color};
   min-width: 220px;
