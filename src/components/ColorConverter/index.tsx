@@ -39,8 +39,9 @@ export const ColorConverter = () => {
         <ColorConverterContainer>
             <ColorContainer key="baseColorContainer" background={baseColor} color={baseColorTitle}>
                 <Title>
-                    <b>Select base color: </b>
+                    Select base color:
                     <input type="color" value={baseColor} onChange={e => setBaseColor(e.target.value)} />
+
                 </Title>
                 {baseColor &&
                     <>
@@ -58,7 +59,7 @@ export const ColorConverter = () => {
             }
             <ColorContainer key="targetColorContainer" background={targetColor} color={targetColorTitle}>
                 <Title>
-                    <b>Select target color: </b>
+                    Select target color:
                     <input type="color" value={targetColor} onChange={e => setTargetColor(e.target.value)} />
                 </Title>
                 {targetColor &&
@@ -73,7 +74,7 @@ export const ColorConverter = () => {
     );
 };
 
-const Title = styled.h4`
+const Title = styled.label`
   display: inline-flex;
   justify-content: space-between;
   margin: 12px 0;  
