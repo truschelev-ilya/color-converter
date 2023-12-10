@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import {hexToRGB} from '../utils';
+import {getHSLDif, hexToHSL, hexToRGB} from '../utils';
 
 export const ColorConverter = () => {
     const [baseColor, setBaseColor] = useState('');
@@ -29,9 +29,15 @@ export const ColorConverter = () => {
         }
     }, [targetColor]);
 
+    useEffect(() => {
+        if (baseColor && targetColor) {
+            setHslDif(getHSLDif(baseColor, targetColor));
+        }
+    }, [baseColor, targetColor]);
+
     return (
         <ColorConverterContainer>
-            <ColorContainer key="baseColorContainer" background={baseColor} fontColor={baseColorTitle}>
+            <ColorContainer key="baseColorContainer" background={baseColor} color={baseColorTitle}>
                 <Title>
                     <b>Select base color: </b>
                     <input type="color" value={baseColor} onChange={e => setBaseColor(e.target.value)} />
@@ -40,15 +46,17 @@ export const ColorConverter = () => {
                     <>
                         <span>Hex: {baseColor}</span>
                         <span>RGB: {hexToRGB(baseColor, true) || ''}</span>
+                        <span>HSL: {hexToHSL(baseColor, true) || ''}</span>
                     </>
                 }
             </ColorContainer>
             {hslDif &&
-                <ColorContainer center>
+                <ColorContainer key="hslDifColorContainer" center>
                     <Title>HSL dif</Title>
+                    <span>{hslDif}</span>
                 </ColorContainer>
             }
-            <ColorContainer key="targetColorContainer" background={targetColor} fontColor={targetColorTitle}>
+            <ColorContainer key="targetColorContainer" background={targetColor} color={targetColorTitle}>
                 <Title>
                     <b>Select target color: </b>
                     <input type="color" value={targetColor} onChange={e => setTargetColor(e.target.value)} />
@@ -57,6 +65,7 @@ export const ColorConverter = () => {
                     <>
                         <span>Hex: {targetColor}</span>
                         <span>RGB: {hexToRGB(targetColor, true) || ''}</span>
+                        <span>HSL: {hexToHSL(targetColor, true) || ''}</span>
                     </>
                 }
             </ColorContainer>
@@ -70,12 +79,12 @@ const Title = styled.h4`
   margin: 12px 0;  
 `;
 
-const ColorContainer = styled.div<{background?: string, fontColor?: string, center?: boolean}>`
+const ColorContainer = styled.div<{background?: string, color?: string, center?: boolean}>`
   display: flex;
   flex-direction: column;
   align-items: ${props => props.center ? 'center': ''};
   background: ${props => props.background};
-  color: ${props => props.fontColor};
+  color: ${props => props.color};
   min-width: 220px;
   padding: 16px;
   border-radius: 4px;
@@ -83,5 +92,5 @@ const ColorContainer = styled.div<{background?: string, fontColor?: string, cent
 
 const ColorConverterContainer = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
