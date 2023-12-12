@@ -13,7 +13,7 @@ export const ColorConverter = () => {
 
     useEffect(() => {
         const rgb = hexToRGB(baseColor);
-        if (typeof rgb !== 'string' && rgb[0] < 120) {
+        if (baseColor && typeof rgb !== 'string' && rgb[0] < 120) {
             setBaseColorTitle('#ffffff');
         } else {
             setBaseColorTitle('#213547');
@@ -22,7 +22,7 @@ export const ColorConverter = () => {
 
     useEffect(() => {
         const rgb = hexToRGB(targetColor);
-        if (typeof rgb !== 'string' && rgb[0] < 120) {
+        if (targetColor && typeof rgb !== 'string' && rgb[0] < 120) {
             setTargetColorTitle('#ffffff');
         } else {
             setTargetColorTitle('#213547');
